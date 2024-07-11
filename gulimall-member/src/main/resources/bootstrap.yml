@@ -1,0 +1,12 @@
+# nacos配置中心的配置只能放在这个bootstrap.yml中，放入application.yml中不生效！！应该是nacos源码层次控制的！!
+# 而且application.name这个配置也必须放在这里，不然nacos的配置中心仍然不生效！！
+spring:
+  application:
+    name: gulimall-member
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos

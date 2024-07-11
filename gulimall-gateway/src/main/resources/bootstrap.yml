@@ -1,0 +1,22 @@
+# nacos配置中心的配置只能放在这个bootstrap.yml中，放入application.yml中不生效！nacos源码层次控制的！ 而且application.name这个配置也必须放在这里，不然nacos的配置中心仍然不生效！！
+# 我猜想因为有许多项目启动时就需要的配置被放在了nacos上，如果nacos配置中心的配置在application.yml中生效的话，就会出现项目启动所需的配置无法获取到，进而无法启动的问题！！
+# 因此将nacos的配置中心的配置放入bootstrap.yml，就能够确保项目启动时所需的配置都能被加载到！！
+spring:
+  application:
+    name: gulimall-gateway
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+#        namespace: 3e6dba42-dfa3-4616-93f5-e02e640c0944
+#        group: dev
+#        extension-configs:
+#          - data-id: mybatis.yml
+#            refresh: true
+#            group: dev
+#          - data-id: spring.yml
+#            refresh: true
+#            group: dev
