@@ -9,11 +9,9 @@ spring:
         password: nacos
     gateway:
       routes:
-        - id: baidu_gateway
-          uri: https://www.baidu.com
+        - id: admin
+          uri: lb://renren-fast
           predicates:
-            - Query=url, baidu
-        - id: qq_gateway
-          uri: https://www.qq.com
-          predicates:
-            - Query=url, qq
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /renren-fast/$\{segment}

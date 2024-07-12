@@ -3,7 +3,7 @@
 # 因此将nacos的配置中心的配置放入bootstrap.yml，就能够确保项目启动时所需的配置都能被加载到！！
 spring:
   application:
-    name: gulimall-gateway
+    name: gulimall-product
 #  cloud:
 #    nacos:
 #      config:

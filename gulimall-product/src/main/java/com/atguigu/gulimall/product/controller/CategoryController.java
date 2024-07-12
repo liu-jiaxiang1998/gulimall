@@ -1,6 +1,7 @@
 package com.atguigu.gulimall.product.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,12 @@ import com.atguigu.gulimall.common.utils.R;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
+
+    @RequestMapping("/list/tree")
+    public R list() {
+        List<CategoryEntity> categoryEntities = categoryService.treeList();
+        return R.ok().put("data", categoryEntities);
+    }
 
     /**
      * 列表
