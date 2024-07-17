@@ -9,6 +9,13 @@ spring:
         password: nacos
     gateway:
       routes:
+        - id: product
+          uri: lb://gulimall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+
         - id: admin
           uri: lb://renren-fast
           predicates:

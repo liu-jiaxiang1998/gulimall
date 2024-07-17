@@ -38,6 +38,12 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         return recursionTreeList(root, categoryEntities);
     }
 
+    @Override
+    public void removeMenusByIds(List<Long> list) {
+        // todo 删除前判断是否引用了这个菜单项！！
+        baseMapper.deleteByIds(list);
+    }
+
     private List<CategoryEntity> recursionTreeList(CategoryEntity root, List<CategoryEntity> all) {
         return all.stream()
                 .filter(categoryEntity -> categoryEntity.getParentCid() == root.getCatId())
